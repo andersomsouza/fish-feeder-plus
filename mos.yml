@@ -8,14 +8,17 @@ modules_version: ${mos.version}
 mongoose_os_version: ${mos.version}
 
 config_schema:
-  - ["mqtt.server", "iot.eclipse.org:1883"]
-  - ["i2c.enable", true]
+  - ["app","o",{title: "Configuracoes do aplicativo"}]
+  - ["app.servo","o",{title: "Configuracoes do servo"}]
+  - ["app.servo.pwm","i",12,{title: "Pino utilizado para controlar posicao do servo"}]
+  - ["app.servo.ciclos","i",4,{title: "Numero de ciclos padrao"}]
 
 tags:
   - js
 
 filesystem:
   - fs
+  - web
 
 libs:
   - origin: https://github.com/mongoose-os-libs/js-demo-bundle

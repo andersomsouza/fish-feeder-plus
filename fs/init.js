@@ -16,8 +16,8 @@ let Servo = {
     recuado : 0,
     avancado : 1
   },
-  SERVO_PWM : 12,
-  SERVO_CICLOS : 4,
+  SERVO_PWM : Cfg.get('app.servo.pwm'),
+  SERVO_CICLOS : Cfg.get('app.servo.ciclos'),
   MAX : 0.03,
   MIN : 0.115,
   estado: 0,
