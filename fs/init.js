@@ -84,8 +84,8 @@ GPIO.set_mode(led, GPIO.MODE_OUTPUT);
 //Para só registrar o cron quando o relogio for atualizado
 Event.addHandler(Event.SYS+5, function(ev, evdata, ud) {
   if(!cronRegistrado){
-    cronAdd("0 0 11 * * *", cronCallback, null);
     cronRegistrado = 1;
+    cronAdd("0 0 11 * * *", cronCallback, null);
   }
 }, null);
 //Configura a interrupção do botão da ESP para ativar servo
