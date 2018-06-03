@@ -59,17 +59,31 @@ let Servo = {
 
 let led = Cfg.get('pins.led');
 let button = Cfg.get('pins.button');
+//Adiciono aqui a função de registro na extensão de cron
+let cronAdd = ffi('int mgos_cron_add(char*, void (*)(userdata, int),userdata)');
+
 // ----------------
 // ---- VARIAVEIS
 // ----------------
 
+//Definição de callback cronologico
+function cronCallback(arg, cron_id) {
+  let now = Timer.now();
+  let timestring = Timer.fmt('%FT%TZ', now);
+  Servo.reset();
+  print('++++ Executou em : ' + timestring);
+}
 // ----------------
 // ---- PROGRAMA
 // ----------------
 //Inicializacao
 Servo.inicializar();
 GPIO.set_mode(led, GPIO.MODE_OUTPUT);
-
+//Adiciono Handler no evento de TIME_CHANGED (SYS + 5)
+//Para só registrar o cron quando o relogio for atualizado
+Event.addHandler(Event.SYS+5, function(ev, evdata, ud) {
+  cronAdd("0 8 * * * *", cronCallback, null);
+}, null);
 //Configura a interrupção do botão da ESP para ativar servo
 GPIO.set_button_handler(button, GPIO.PULL_UP, GPIO.INT_EDGE_NEG, 20, function() {
   Servo.reset();

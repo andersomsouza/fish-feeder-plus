@@ -14,10 +14,17 @@ Fish feeder powered by MongooseOS
 When the process is called internally, it does this movement `app.servo.ciclos` times
 
 - [x] Run via `mos call Alimentar`
-- [x] Connect with MongooseDashboard and run RPC `Alimentar`
 - [x] Via REST API using RPC protocol 
-- [ ] Via MQTT Protocol
-- [ ] Via daily scheduling
+- [x] Via WebPage
+- [x] Via daily scheduling
+
+
+## Changelog
+
+* Modified `mos.yml` to just necessaries libs
+* Added SNTP Client 
+* Added mDNS/ZeroConf Protocol
+* Added Cron to make daily schedulers
 
 ## Configurations
 
