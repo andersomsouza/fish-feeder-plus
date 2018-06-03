@@ -25,10 +25,11 @@ When the process is called internally, it does this movement `app.servo.ciclos` 
 * Added SNTP Client 
 * Added mDNS/ZeroConf Protocol
 * Added Cron to make daily schedulers
+* New webpage
 
 ## Configurations
 
 At `mos.yml`, set pwm port in `"app.servo.pwm"` value and default cycles number in `"app.servo.ciclos"`
 
-Developed by Anderson Souza
+Developed by Anderson Souza and Geovana Muniz
 Follow me at [github](www.github.com/andersomsouza) or at [my personal webpage](www.barbaruiva.xyz)
