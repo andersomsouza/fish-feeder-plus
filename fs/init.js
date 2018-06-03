@@ -73,6 +73,7 @@ function cronCallback(arg, cron_id) {
   Servo.reset();
   print('++++ Executou em : ' + timestring);
 }
+let cronRegistrado = 0;
 // ----------------
 // ---- PROGRAMA
 // ----------------
@@ -82,7 +83,10 @@ GPIO.set_mode(led, GPIO.MODE_OUTPUT);
 //Adiciono Handler no evento de TIME_CHANGED (SYS + 5)
 //Para só registrar o cron quando o relogio for atualizado
 Event.addHandler(Event.SYS+5, function(ev, evdata, ud) {
-  cronAdd("0 8 * * * *", cronCallback, null);
+  if(!cronRegistrado){
+    cronAdd("0 0 11 * * *", cronCallback, null);
+    cronRegistrado = 1;
+  }
 }, null);
 //Configura a interrupção do botão da ESP para ativar servo
 GPIO.set_button_handler(button, GPIO.PULL_UP, GPIO.INT_EDGE_NEG, 20, function() {
