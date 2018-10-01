@@ -2,6 +2,8 @@
 
 Fish feeder powered by MongooseOS
 
+![tela](img/Screenshot_1.png)
+
 ## Build
 
 1. Connect your esp8266 to computer
